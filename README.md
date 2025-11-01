@@ -1,5 +1,9 @@
 # EnvFlip
 
+<p align="center">
+  <img src="resources/icon.svg" alt="EnvFlip Icon" width="128" height="128">
+</p>
+
 A Visual Studio Code extension for managing environment variables in `.env` files with easy toggle functionality.
 
 ## Features
@@ -100,4 +104,5 @@ Initial release with core functionality:
 ## License
 
 MIT
+
 # EnvFlip

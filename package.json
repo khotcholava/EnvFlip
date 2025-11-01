@@ -4,6 +4,23 @@
   "description": "Manage environment variables in .env files with easy toggle functionality",
   "version": "0.0.1",
   "publisher": "khotcholava",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/khotcholava/EnvFlip"
+  },
+  "homepage": "https://github.com/khotcholava/EnvFlip",
+  "bugs": {
+    "url": "https://github.com/khotcholava/EnvFlip/issues"
+  },
+  "keywords": [
+    "env",
+    "environment",
+    "dotenv",
+    ".env",
+    "variables",
+    "toggle",
+    "configuration"
+  ],
   "engines": {
     "vscode": "^1.85.0"
   },
@@ -20,7 +37,7 @@
         {
           "id": "envflip",
           "title": "EnvFlip",
-          "icon": "resources/icon.svg"
+          "icon": "resources/icon.png"
         }
       ]
     },
