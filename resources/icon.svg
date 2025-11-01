@@ -1,5 +1,11 @@
-<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <rect x="1" y="1" width="30" height="30" rx="4" stroke="#E8E8E8" stroke-width="2" fill="none"/>
-  <text x="50%" y="50%" text-anchor="middle" dy=".35em" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="white">.E</text>
+<svg width="128" height="128" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background fill with greenish color -->
+  <rect x="1" y="1" width="30" height="30" rx="4" fill="#2D5A3D"/>
+  
+  <!-- Double border for visibility in both themes -->
+  <rect x="1" y="1" width="30" height="30" rx="4" stroke="#4CAF50" stroke-width="2" fill="none"/>
+  <rect x="1" y="1" width="30" height="30" rx="4" stroke="#1B3A27" stroke-width="1" fill="none" opacity="0.5"/>
+  
+  <!-- Text with stroke for better visibility -->
+  <text x="50%" y="50%" text-anchor="middle" dy=".35em" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#A5D6A7" stroke="#1B3A27" stroke-width="0.5" paint-order="stroke">.E</text>
 </svg>
-

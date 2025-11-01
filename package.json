@@ -2,7 +2,8 @@
   "name": "envflip",
   "displayName": "EnvFlip",
   "description": "Manage environment variables in .env files with easy toggle functionality",
-  "version": "0.0.1",
+  "version": "1.0.1",
+  "icon": "resources/icon.png",
   "publisher": "khotcholava",
   "repository": {
     "type": "git",
@@ -37,7 +38,7 @@
         {
           "id": "envflip",
           "title": "EnvFlip",
-          "icon": "resources/icon.png"
+          "icon": "resources/activity-bar-icon.png"
         }
       ]
     },
