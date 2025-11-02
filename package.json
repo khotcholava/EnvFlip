@@ -46,7 +46,9 @@
       "envflip": [
         {
           "id": "envflip.envView",
-          "name": "Environment Files"
+          "name": "Environment Files",
+          "contextualTitle": "Environment Files",
+          "when": "true"
         }
       ]
     },
@@ -60,10 +62,30 @@
         "command": "envflip.refresh",
         "title": "Refresh",
         "icon": "$(refresh)"
+      },
+      {
+        "command": "envflip.search",
+        "title": "Search Variables",
+        "icon": "$(search)"
+      },
+      {
+        "command": "envflip.clearFilter",
+        "title": "Clear Filter",
+        "icon": "$(clear-all)"
       }
     ],
     "menus": {
       "view/title": [
+        {
+          "command": "envflip.search",
+          "when": "view == envflip.envView",
+          "group": "navigation"
+        },
+        {
+          "command": "envflip.clearFilter",
+          "when": "view == envflip.envView",
+          "group": "navigation"
+        },
         {
           "command": "envflip.refresh",
           "when": "view == envflip.envView",

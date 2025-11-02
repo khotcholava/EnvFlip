@@ -14,6 +14,7 @@ export function activate(context: vscode.ExtensionContext) {
     showCollapseAll: true,
   });
 
+  treeProvider.setTreeView(treeView);
   context.subscriptions.push(treeView);
 
   // Register refresh command
@@ -40,6 +41,37 @@ export function activate(context: vscode.ExtensionContext) {
   );
 
   context.subscriptions.push(toggleCommand);
+
+  // Register search/filter command
+  const searchCommand = vscode.commands.registerCommand(
+    "envflip.search",
+    async () => {
+      const currentFilter = treeProvider.getFilter();
+      const input = await vscode.window.showInputBox({
+        prompt: "Search environment variables (by key or value)",
+        placeHolder: "Enter search text...",
+        value: currentFilter,
+      });
+
+      if (input !== undefined) {
+        const filterText = input || "";
+        treeProvider.setFilter(filterText);
+      }
+    }
+  );
+
+  context.subscriptions.push(searchCommand);
+
+  // Register clear filter command
+  const clearFilterCommand = vscode.commands.registerCommand(
+    "envflip.clearFilter",
+    () => {
+      treeProvider.setFilter("");
+      treeProvider.updateMessage("");
+    }
+  );
+
+  context.subscriptions.push(clearFilterCommand);
 
   // Initial load
   treeProvider.refresh();
