@@ -51,9 +51,47 @@ export class EnvTreeProvider implements vscode.TreeDataProvider<EnvTreeItem> {
 
   private envFiles: EnvFile[] = [];
   private fileWatcher?: vscode.FileSystemWatcher;
+  private filterText: string = "";
+  private treeView?: vscode.TreeView<EnvTreeItem>;
+  private message: string = "";
 
   constructor(private context: vscode.ExtensionContext) {
     this.setupFileWatcher();
+  }
+
+  public setTreeView(treeView: vscode.TreeView<EnvTreeItem>) {
+    this.treeView = treeView;
+    treeView.message = this.message;
+  }
+
+  /**
+   * Update the message shown above the tree view
+   */
+  public updateMessage(filterText: string): void {
+    if (this.treeView) {
+      if (filterText) {
+        this.message = `Filtering by: "${filterText}"`;
+      } else {
+        this.message = "";
+      }
+      this.treeView.message = this.message;
+    }
+  }
+
+  /**
+   * Set filter text for filtering variables
+   */
+  setFilter(filterText: string): void {
+    this.filterText = filterText;
+    this.updateMessage(filterText);
+    this._onDidChangeTreeData.fire();
+  }
+
+  /**
+   * Get current filter text
+   */
+  getFilter(): string {
+    return this.filterText;
   }
 
   /**
@@ -113,7 +151,19 @@ export class EnvTreeProvider implements vscode.TreeDataProvider<EnvTreeItem> {
       );
     } else if (element.type === "file" && element.envFile) {
       // Child level - show variables
-      return element.envFile.variables.map(
+      let variables = element.envFile.variables;
+
+      // Apply filter if set
+      if (this.filterText) {
+        const filterLower = this.filterText.toLowerCase();
+        variables = variables.filter(
+          (variable) =>
+            variable.key.toLowerCase().includes(filterLower) ||
+            variable.value.toLowerCase().includes(filterLower)
+        );
+      }
+
+      return variables.map(
         (variable) =>
           new EnvTreeItem(
             variable.key,
