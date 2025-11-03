@@ -92,6 +92,12 @@ None at this time. Please report issues on the project repository.
 
 ## Release Notes
 
+### 1.1.0
+
+Initial release with core functionality:
+
+- Added search functionality of env files
+
 ### 1.0.0
 
 Initial release with core functionality:
